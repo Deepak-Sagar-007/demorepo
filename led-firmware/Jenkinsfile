@@ -5,7 +5,7 @@ library identifier: 'shared_library@main', retriever: modernSCM(
 )
 
 pipeline {
-    agent { label 'linux-node1' }
+    agent { label 'linux-agent' }
     options {
         timestamps()
     }
@@ -20,11 +20,14 @@ pipeline {
             }
         }
 
-      stage('Prepare') {
-    steps {
-        echo 'Skipping prepareEnvironment (not compatible with this agent)'
-       }
-       }
+        stage('Prepare') {
+            steps {
+                script {
+                    echo 'Using shared library: prepareEnvironment()'
+                    prepareEnvironment(env.PROJECT_DIR)
+                }
+            }
+        }
 
         stage('Lint') {
             steps {
