@@ -37,8 +37,6 @@ target_compile_options(firmware.elf PRIVATE
 target_link_options(firmware.elf PRIVATE
     -mcpu=cortex-m4
     -mthumb
-    -nostdlib
-    -nostartfiles
     -Wl,--gc-sections
 )
 
