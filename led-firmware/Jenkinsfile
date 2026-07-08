@@ -20,14 +20,11 @@ pipeline {
             }
         }
 
-        stage('Prepare') {
-            steps {
-                script {
-                    echo 'Using shared library: prepareEnvironment()'
-                    prepareEnvironment(env.PROJECT_DIR)
-                }
-            }
-        }
+      stage('Prepare') {
+    steps {
+        echo 'Skipping prepareEnvironment (not compatible with this agent)'
+       }
+       }
 
         stage('Lint') {
             steps {
